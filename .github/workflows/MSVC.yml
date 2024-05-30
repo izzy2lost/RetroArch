@@ -1,7 +1,7 @@
 name: CI Windows (MSVC)
 
 on:
-  push:
+  workflow_dispatch:
   pull_request:
   repository_dispatch:
     types: [run_build]
