@@ -45,6 +45,10 @@ MSG_HASH(
    "Esploración"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CONTENTLESS_CORES_TAB,
+   "Nucleos ensin conteníu"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_ADD_TAB,
    "Importación de conteníu"
    )
@@ -99,7 +103,11 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_ADD_CONTENT_LIST,
-   "Importación"
+   "Importación de conteníu"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_ADD_CONTENT_LIST,
+   "Crea y anueva llistes pente la busca de conteníu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_ONLINE_UPDATER,
@@ -112,6 +120,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY,
    "Xuegu en llinia"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_NETPLAY,
+   "Xúnite a una sesión de xuegu en llinia o agospia una."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SETTINGS,
@@ -177,7 +189,7 @@ MSG_HASH( /* FIXME Maybe add a description? */
 
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_FAVORITES,
-   "Direutoriu d'aniciu"
+   "Direutoriu inicial"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DOWNLOADED_FILE_DETECT_CORE_LIST,
@@ -200,7 +212,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_GOTO_MUSIC,
-   "Equí apaez les canciones que se reproduxeren anteriormente."
+   "Equí apaecen les canciones que se reproduxeren anteriormente."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_GOTO_IMAGES,
@@ -208,7 +220,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_GOTO_IMAGES,
-   "Equí apaecen les imáxenes que se vieren anteriormente."
+   "Equí apaecen les imáxenes que se visualizaren anteriormente."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_GOTO_VIDEO,
@@ -227,6 +239,10 @@ MSG_HASH(
    "Restola tol conteníu que concase cola base de datos per una interfaz de busca per estayes."
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_GOTO_CONTENTLESS_CORES,
+   "Nucleos ensin conteníu"
+   )
+MSG_HASH(
    MENU_ENUM_SUBLABEL_GOTO_CONTENTLESS_CORES,
    "Equí apaecen los nucleos instalaos que puen funcionar ensin cargar conteníu."
    )
@@ -236,6 +252,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_UPDATER_LIST,
    "Baxador de nucleos"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_UPDATE_INSTALLED_CORES,
+   "Anovar los nucleos instalaos"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_UPDATE_INSTALLED_CORES,
@@ -256,6 +276,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DOWNLOAD_CORE_CONTENT,
    "Baxador de conteníu"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_UPDATE_CORE_INFO_FILES,
+   "Anovar los ficheros d'información de los nucleos"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_UPDATE_ASSETS,
@@ -292,6 +316,14 @@ MSG_HASH(
 
 /* Main Menu > Information */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CORE_INFORMATION,
+   "Información del nucleu"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CORE_INFORMATION,
+   "Visualiza la información relativa a l'aplicación/nucleu."
+   )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_DISC_INFORMATION,
    "Visualiza la información de los discos multimedia inxertaos."
@@ -373,7 +405,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_LOCK,
-   "Bloquiar el nucléu instaláu"
+   "Bloquiar el nucleu instaláu"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CORE_DELETE,
@@ -396,7 +428,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_GIT_VERSION,
-   "Versión de git"
+   "Versión de Git"
    )
 MSG_HASH( /* FIXME Should be MENU_LABEL_VALUE */
    MSG_COMPILER,
@@ -424,7 +456,7 @@ MSG_HASH( /* FIXME Maybe add a description? */
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_POWER_SOURCE,
-   "Fonte enerxética"
+   "Fonte d'enerxía"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_VIDEO_CONTEXT_DRIVER,
@@ -731,9 +763,21 @@ MSG_HASH(
 
 /* Main Menu > Configuration File */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SAVE_CURRENT_CONFIG,
+   "Guardar la configuración actual"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SAVE_NEW_CONFIG,
+   "Guardar la configuración nueva"
+   )
 
 /* Main Menu > Help */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_HELP_CONTROLS,
+   "Controles básicos del menú"
+   )
 
 /* Main Menu > Help > Basic Menu Controls */
 
@@ -752,6 +796,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_BASIC_MENU_CONTROLS_INFO,
    "Información"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_BASIC_MENU_CONTROLS_START,
+   "Aniciar"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_BASIC_MENU_CONTROLS_TOGGLE_MENU,
@@ -774,15 +822,11 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_DRIVER_SETTINGS,
-   "Cambia los controladores usaos pol sistema."
+   "Camuda los controladores usaos pol sistema."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SETTINGS,
    "Videu"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_SETTINGS,
-   "Camuda los axustes de la salida del videu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AUDIO_SETTINGS,
@@ -810,7 +854,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_SAVING_SETTINGS,
-   "Camuda los axustes de guardáu."
+   "Camuda la configuración del guardáu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_SETTINGS,
@@ -825,6 +869,14 @@ MSG_HASH(
    "Activar la sincronización na nube"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_SYNC_CONFIGS,
+   "Sync: Configuration Files"
+   )      
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CLOUD_SYNC_DESTRUCTIVE,
+   "When disabled, files are moved to a backup folder before being overwritten or deleted."
+   )      
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_USERNAME,
    "Nome d'usuariu"
    )
@@ -838,7 +890,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_LOGGING_SETTINGS,
-   "Camuda los axustes de rexistru."
+   "Camuda la configuración del rexistru."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_FILE_BROWSER_SETTINGS,
@@ -853,6 +905,10 @@ MSG_HASH(
    "Camuda los axustes de grabación."
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_USER_INTERFACE_SETTINGS,
+   "Interfaz d'usuariu"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AI_SERVICE_SETTINGS,
    "Serviciu d'IA"
    )
@@ -862,11 +918,11 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_POWER_MANAGEMENT_SETTINGS,
-   "Xestión enerxética"
+   "Xestión d'enerxía"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_POWER_MANAGEMENT_SETTINGS,
-   "Camuda los axustes de la xestión enerxética."
+   "Camuda la configuración de la xestión d'enerxía."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RETRO_ACHIEVEMENTS_SETTINGS,
@@ -874,7 +930,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_RETRO_ACHIEVEMENTS_SETTINGS,
-   "Camuda los axustes de los llogros."
+   "Camuda los configuración de los llogros."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETWORK_SETTINGS,
@@ -886,7 +942,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_PLAYLIST_SETTINGS,
-   "Camuda los axustes de les llistes."
+   "Camuda la configuración de les llistes."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_USER_SETTINGS,
@@ -894,7 +950,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DIRECTORY_SETTINGS,
-   "Direutoriu"
+   "Direutorios"
    )
 
 /* Core option category placeholders for icons */
@@ -951,10 +1007,6 @@ MSG_HASH(
    "Salida"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_OUTPUT_SETTINGS,
-   "Camuda los axustes de la salida del videu."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_FULLSCREEN_MODE_SETTINGS,
    "Mou a pantalla completa"
    )
@@ -980,10 +1032,18 @@ MSG_HASH(
    )
 #if defined(DINGUX)
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_VIDEO_DINGUX_IPU_FILTER_BICUBIC,
+   "Bicúbicu"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_DINGUX_IPU_FILTER_BILINEAR,
    "Billinial"
    )
 #if defined(RS90) || defined(MIYOO)
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_VIDEO_DINGUX_RS90_SOFTFILTER_BRESENHAM_HORZ,
+   "Semillinial"
+   )
 #endif
 #endif
 MSG_HASH(
@@ -1013,11 +1073,11 @@ MSG_HASH(
 
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_FULLSCREEN_X,
-   "Anchor a pantalla completa"
+   "Llargor de la pantalla completa"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_FULLSCREEN_Y,
-   "Altor a pantalla completa"
+   "Altor de la pantalla completa"
    )
 
 /* Settings > Video > Windowed Mode */
@@ -1032,7 +1092,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_WINDOW_WIDTH,
-   "Anchor de la ventana"
+   "Llargor de la ventana"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_WINDOW_HEIGHT,
@@ -1047,7 +1107,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_INDEX,
-   "Proporción del aspeutu"
+   "Proporción d'aspeutu"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_CONFIG,
@@ -1056,8 +1116,10 @@ MSG_HASH(
 #if defined(DINGUX)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_DINGUX_IPU_KEEP_ASPECT,
-   "Caltener la proporción del aspeutu"
+   "Caltener la proporción d'aspeutu"
    )
+#endif
+#if defined(RARCH_MOBILE)
 #endif
 
 /* Settings > Video > HDR */
@@ -1083,10 +1145,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AUDIO_OUTPUT_SETTINGS,
    "Salida"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_AUDIO_OUTPUT_SETTINGS,
-   "Camuda los axustes de la salida del audiu."
    )
 #ifdef HAVE_MICROPHONE
 #endif
@@ -1149,7 +1207,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_RATE_CONTROL_DELTA,
-   "Ayuda a amenorgar les imperfeiciones na sincronización del audiu y videu. Ten curiáu si esta opción ta desactivada, la sincronización afayadiza ye imposible de consiguir."
+   "Ayuda a amenorgar les imperfeiciones na sincronización del audiu y videu. Ten curiáu si esta opción ta desactivada, la sincronización afayadiza ye cuasi imposible de consiguir."
    )
 
 /* Settings > Audio > MIDI */
@@ -1256,6 +1314,10 @@ MSG_HASH(
    "Detectar"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_PAUSE_ON_DISCONNECT,
+   "Posar el conteníu cuando'l mandu se desconecte"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_HOTKEY_BINDS,
    "Atayos"
    )
@@ -1355,19 +1417,19 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_JOYPAD_B,
-   "Botón B (Abaxo)"
+   "Botón B (abaxo)"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_JOYPAD_Y,
-   "Botón Y (Esquierda)"
+   "Botón Y (esquierda)"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_JOYPAD_A,
-   "Botón A (Derecha)"
+   "Botón A (derecha)"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_JOYPAD_X,
-   "Botón X (Arriba)"
+   "Botón X (arriba)"
    )
 
 /* Settings > Latency */
@@ -1377,7 +1439,7 @@ MSG_HASH(
 
 MSG_HASH(
    MENU_ENUM_SUBLABEL_DUMMY_ON_CORE_SHUTDOWN,
-   "Dalgunos nucleos tienen una función d'apagáu, la carga d'un nucleu maniquín evita que RetroArch cole."
+   "Dalgunos nucleos tienen una función d'apagáu, la carga d'un nucleu maniquín impide que RetroArch cole."
    )
 #ifndef HAVE_DYNAMIC
 #endif
@@ -1394,6 +1456,10 @@ MSG_HASH(
 
 
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_CORE_MANAGER_STEAM,
+   "Amosar la opción «Xestionar nucleos»"
+)
 
 
 
@@ -1523,11 +1589,23 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_POS_X,
-   "Posición de los avisos (Horizontal)"
+   "Posición de los avisos (horizontal)"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_POS_Y,
-   "Posición de los avisos (Vertical)"
+   "Posición de los avisos (vertical)"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_COLOR_RED,
+   "Color de los avisos (coloráu)"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_COLOR_GREEN,
+   "Color de los avisos (verde)"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_COLOR_BLUE,
+   "Color de los avisos (azul)"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_MESSAGE_BGCOLOR_ENABLE,
@@ -1572,7 +1650,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PAUSE_LIBRETRO,
-   "Posar el conteníu al tar activu'l menú"
+   "Posar el conteníu cuando'l menú ta activu"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MENU_SAVESTATE_RESUME,
@@ -1591,8 +1669,32 @@ MSG_HASH(
    "Vórtiz"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MOUSE_ENABLE,
+   "Compatibilidá con mures"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_MOUSE_ENABLE,
+   "Permite que'l menú se controle con un mur."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_POINTER_ENABLE,
+   "Compatibilidá con pantalles táctiles"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_POINTER_ENABLE,
+   "Permite que'l menú se controle con una pantalla táctil."
+   )
+MSG_HASH(
    MENU_ENUM_SUBLABEL_THREADED_DATA_RUNLOOP_ENABLE,
    "Fai xeres nun filu separtáu."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_PAUSE_NONACTIVE,
+   "Posar el conteníu cuando nun ta activu"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_PAUSE_NONACTIVE,
+   "Posa'l conteníu cuando RetroArch nun ye la ventana activa."
    )
 
 /* Settings > User Interface > Menu Item Visibility */
@@ -1605,8 +1707,52 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SETTINGS_VIEWS_SETTINGS,
    "Configuración"
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_LOAD_CORE,
+   "Amosar la opción «Cargar un nucleu»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_LOAD_CONTENT,
+   "Amosar la opción «Cargar conteníu»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_LOAD_DISC,
+   "Amosar la opción «Cargar un discu»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_DUMP_DISC,
+   "Amosar la opción «Volquiar el discu»"
+   )
 #ifdef HAVE_LAKKA
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_EJECT_DISC,
+   "Amosar la opción «Espulsar el discu»"
+   )
 #endif
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_ONLINE_UPDATER,
+   "Amosar la opción «Anovador»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_INFORMATION,
+   "Amosar la opción «Información»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_CONFIGURATIONS,
+   "Amosar la opción «Ficheru de configuración»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_HELP,
+   "Amosar la opción «Ayuda»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_QUIT_RETROARCH,
+   "Amosar la opción «Colar de RetroArch»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_RESTART_RETROARCH,
+   "Amosar la opción «Reaniciar RetroArch»"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_ADD_CONTENT_ENTRY_DISPLAY_MAIN_TAB,
    "Menú principal"
@@ -1626,6 +1772,10 @@ MSG_HASH(
 
 /* Settings > User Interface > Menu Item Visibility > Quick Menu */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_QUICK_MENU_SHOW_INFORMATION,
+   "Amosar la opción «Información»"
+   )
 
 /* Settings > User Interface > Views > Settings */
 
@@ -1640,6 +1790,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_WALLPAPER_OPACITY,
    "Opacidá del fondu"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_FRAMEBUFFER_OPACITY,
+   "Opacidá"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_USE_PREFERRED_SYSTEM_COLOR_THEME,
@@ -1667,6 +1821,10 @@ MSG_HASH(
 
 /* Settings > Accessibility */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_ACCESSIBILITY_ENABLED,
+   "Activar l'accesibilidá"
+   )
 
 /* Settings > Power Management */
 
@@ -1703,12 +1861,20 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEEVOS_APPEARANCE_SETTINGS,
    "Aspeutu"
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CHEEVOS_APPEARANCE_ANCHOR,
+   "Posición"
+   )
 
 /* Settings > Achievements > Visibility */
 
 
 /* Settings > Network */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_NETPLAY_MITM_SERVER_LOCATION_2,
+   "Europa occidental"
+   )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_NETPLAY_IP_ADDRESS,
    "La direición del agospiador al que conectase."
@@ -1728,6 +1894,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_ALLOW_PAUSING,
    "Permitir la posa"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_NETPLAY_NAT_TRAVERSAL,
+   "Al agospiar, esta opción tenta de detectar les conexones d'internet con UPnP o teunoloxíes asemeyaes pa escapar de les LANs."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_NETWORK_CMD_ENABLE,
+   "Comandos per rede"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_STDIN_CMD_ENABLE,
@@ -1889,7 +2063,7 @@ MSG_HASH(
 
 MSG_HASH(
    MENU_ENUM_SUBLABEL_ACCOUNTS_RETRO_ACHIEVEMENTS,
-   "Gana llogros en xuegos clásicos. Pa consiguir más información, visita «https://retroachievements.org»."
+   "Gana llogros en xuegos clásicos. Pa consiguir más información, visita«https://retroachievements.org»."
    )
 
 /* Settings > User > Accounts > RetroAchievements */
@@ -1964,7 +2138,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_LIBRETRO_INFO_PATH,
-   "Información de nucelos"
+   "Información de los nucelos"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONTENT_DATABASE_DIRECTORY,
@@ -2032,8 +2206,12 @@ MSG_HASH(
 /* Import Content */
 
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SCAN_FILE,
+   "Buscar un ficheru"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANUAL_CONTENT_SCAN_LIST,
-   "Escanéu manual"
+   "Busca manual"
    )
 
 /* Import Content > Scan File */
@@ -2041,6 +2219,10 @@ MSG_HASH(
 
 /* Import Content > Manual Scan */
 
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MANUAL_CONTENT_SCAN_DIR,
+   "Direutoriu del conteníu"
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANUAL_CONTENT_SCAN_SYSTEM_NAME,
    "Nome del sistema"
@@ -2055,15 +2237,15 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANUAL_CONTENT_SCAN_SEARCH_ARCHIVES,
-   "Escaniar dientro de los ficheros"
+   "Buscar dientro de los ficheros"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANUAL_CONTENT_SCAN_START,
-   "Aniciar l'escanéu"
+   "Aniciar la busca"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MANUAL_CONTENT_SCAN_START,
-   "Escania'l conteníu esbilláu."
+   "Busca'l conteníu seleicionáu."
    )
 
 /* Explore tab */
@@ -2129,7 +2311,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_EXPLORE_BY_ARTSTYLE,
-   "Pol estilu gráficu"
+   "Pol estilu artísticu"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_EXPLORE_BY_NARRATIVE,
@@ -2386,23 +2568,23 @@ MSG_HASH(
 
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_CORES_AVAILABLE,
-   "Nun hai nucleos disponibles"
+   "Nun hai nengún nucleu disponible"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_FAVORITES_AVAILABLE,
-   "Nun hai favoritos disponibles"
+   "Nun hai nengún elementu favoritu disponible"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_IMAGES_AVAILABLE,
-   "Nun hai imáxenes disponibles"
+   "Nun hai nenguna imaxe disponible"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_MUSIC_AVAILABLE,
-   "Nun hai música disponible"
+   "Nun hai nenguna canción disponible"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_VIDEOS_AVAILABLE,
-   "Nun hai vídeos disponibles"
+   "Nun hai nengún videu disponible"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_INFORMATION_AVAILABLE,
@@ -2410,7 +2592,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_SETTINGS_FOUND,
-   "Nun s'atoparon los axustes"
+   "Nun s'atopó nenguna opción"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NO_BT_DEVICES_FOUND,
@@ -2426,7 +2608,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SEARCH,
-   "Buscar"
+   "Busca"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_BASIC_MENU_CONTROLS_BACK,
@@ -2632,7 +2814,7 @@ MSG_HASH(
 
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_RGUI_ASPECT_RATIO,
-   "Proporción del aspeutu"
+   "Proporción d'aspeutu"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_RGUI_PARTICLE_EFFECT,
@@ -2870,6 +3052,10 @@ MSG_HASH(
    "N'iconos"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MATERIALUI_SHOW_NAV_BAR,
+   "Amosar la barra de navegación"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_THUMBNAILS_MATERIALUI,
    "Miniatura primaria"
    )
@@ -2985,7 +3171,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_MENU_VIEW_OPTIONS_TITLE,
-   "Axustes"
+   "Configuración"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_MENU_TOOLS,
@@ -3009,7 +3195,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_LOAD_CORE,
-   "Carga d'un nucleu"
+   "Cargar un nucleu"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_NAME,
@@ -3025,7 +3211,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_TAB_FILE_BROWSER,
-   "Restolador"
+   "Restolador de ficheros"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_TAB_FILE_BROWSER_UP,
@@ -3045,7 +3231,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_CORE_INFO,
-   "Información del nucleu"
+   "Información de los nucelos"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_CORE_SELECTION_ASK,
@@ -3061,7 +3247,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_RESTART_TO_TAKE_EFFECT,
-   "Reanicia'l programa pa que los cambeos faigan efeutu, por favor."
+   "Reanicia'l programa pa que los cambeos faigan efeutu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_LOG,
@@ -3117,7 +3303,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_MENU_SEARCH_CLEAR,
-   "Llimpiar"
+   "Borrar"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_PROGRESS,
@@ -3257,7 +3443,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_DOWNLOAD_ALREADY_IN_PROGRESS,
-   "Xá hai una descarga en cursu."
+   "Yá hai una descarga en cursu."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QT_MENU_VIEW_OPTIONS_THUMBNAIL_TYPE,
@@ -3319,6 +3505,10 @@ MSG_HASH(
    "Usar el visor d'imáxenes integráu"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_BROWSE_START,
+   "Aniciar"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_NETPLAY_ROOM_NICKNAME,
    "Nomatu: %s"
    )
@@ -3355,7 +3545,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLEAR_SETTING,
-   "Llimpiar"
+   "Borrar"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEEVOS_DESCRIPTION,
@@ -3378,23 +3568,23 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DATABASE_CURSOR_LIST_ENTRY_ESRB_RATING,
-   "Base de datos - Peñera: Valoración d'ESRB"
+   "Base de datos - Peñera: Clasificación d'ESRB"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DATABASE_CURSOR_LIST_ENTRY_ELSPA_RATING,
-   "Base de datos - Peñera: Valoración d'ELSPA"
+   "Base de datos - Peñera: Clasificación d'ELSPA"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DATABASE_CURSOR_LIST_ENTRY_PEGI_RATING,
-   "Base de datos - Peñera: Valoración de PEGI"
+   "Base de datos - Peñera: Clasificación de PEGI"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DATABASE_CURSOR_LIST_ENTRY_CERO_RATING,
-   "Base de datos - Peñera: Valoración de CERO"
+   "Base de datos - Peñera: Clasificación de CERO"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_DATABASE_CURSOR_LIST_ENTRY_BBFC_RATING,
-   "Base de datos - Peñera: Valoración de BBFC"
+   "Base de datos - Peñera: Clasificación de BBFC"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CONFIG,
@@ -3463,6 +3653,10 @@ MSG_HASH(
    "%.*s xunióse como xugador %u"
    )
 MSG_HASH(
+   MSG_NETPLAY_ENDIAN_DEPENDENT,
+   "Esti nucleu nun ye compatible col xuegu en llinia ente estes plataformes"
+   )
+MSG_HASH(
    MSG_NETPLAY_SERVER_NAMED_HANGUP,
    "«%s» desconectóse"
    )
@@ -3509,7 +3703,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MSG_ALL_CORES_SWITCHED_PFD,
-   "Tolos nucleos sofitaos cambiaron a les versiones de la Play Store"
+   "Tolos nucleos compatibles cambiaron a les versiones de Play Store"
    )
 MSG_HASH(
    MSG_ADDED_TO_FAVORITES,
@@ -3529,7 +3723,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MSG_COULD_NOT_FIND_VALID_DATA_TRACK,
-   "Nun se pudo atopar nenguna pista de datos válida"
+   "Nun se pudo atopar la pista de datos válida"
    )
 MSG_HASH(
    MSG_COULD_NOT_OPEN_DATA_TRACK,
@@ -3673,7 +3867,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MSG_LOAD_CORE_FIRST,
-   "Carga un nucleu primero, por favor."
+   "Carga un nucleu primero."
    )
 MSG_HASH(
    MSG_DISC_DUMP_FAILED_TO_WRITE_TO_DISK,
@@ -3716,6 +3910,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_META_RESTART_KEY,
    "Reaniciar Retroarch"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_REBOOT,
+   "Amosar la opción «Reaniciar»"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_MENU_SHOW_SHUTDOWN,
+   "Amosar la opción «Apagar»"
    )
 MSG_HASH(
    MSG_LOCAL,

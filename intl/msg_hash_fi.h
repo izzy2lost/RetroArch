@@ -1209,9 +1209,13 @@ MSG_HASH(
    "Tuhoava pilvisynkronointi"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_SYNC_CONFIGS,
+   "Sync: Configuration Files"
+   )      
+MSG_HASH(
    MENU_ENUM_SUBLABEL_CLOUD_SYNC_DESTRUCTIVE,
    "Kun pois käytöstä, tiedostot siirretään varmuuskopio-kansioon, ennen kuin niitä korvataan tai poistetaan."
-   )
+   )      
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_DRIVER,
    "Pilvisynkronoinnin taustaosa"
@@ -2020,6 +2024,10 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_MONITOR_INDEX,
    "Valitse mitä näyttöä käytetään."
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_HELP_VIDEO_MONITOR_INDEX,
+   "Käytetty monitori. 0 (oletus) ei valitse mitään tiettyä, 1 (ensimmäinen monitori) ja ylöspäin kehottaa RetroArchia käyttämään kyseistä monitoria."
+   )
 #if defined (WIIU)
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_WIIU_PREFER_DRC,
@@ -2324,17 +2332,11 @@ MSG_HASH(
    "Mukautettu kuvasuhde (X-sijainti)"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_VIEWPORT_CUSTOM_X,
-   "Mukautettu ikkunan siirtymä, jota käytetään ikkunan X-akselin sijainnin määrittämiseen.\nNämä jätetään huomioimatta, jos 'Skaalaa kokonaisluvuin' on käytössä."
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_VIEWPORT_CUSTOM_Y,
    "Mukautettu kuvasuhde (Y-sijainti)"
    )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_VIEWPORT_CUSTOM_Y,
-   "Mukautettu ikkunan siirtymä, jota käytetään ikkunan Y-akselin sijainnin määrittämiseen.\nNämä jätetään huomioimatta, jos 'Skaalaa kokonaisluvuin' on käytössä."
-   )
+#if defined(RARCH_MOBILE)
+#endif
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_VIEWPORT_CUSTOM_WIDTH,
    "Mukautettu kuvasuhde (Leveys)"
@@ -2444,6 +2446,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_FRAME_DELAY_AUTOMATIC,
    "Automaattinen"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_VIDEO_FRAME_DELAY_EFFECTIVE,
+   "nykyinen"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_HARD_SYNC,
@@ -2559,12 +2565,24 @@ MSG_HASH(
    "Mykistä ääni automaattisesti, kun pikakelaus on käytössä."
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_AUDIO_FASTFORWARD_SPEEDUP,
+   "Nopeuta pikakelattaessa"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_AUDIO_FASTFORWARD_SPEEDUP,
+   "Nopeuta ääni pikakelatessa. Estää säröilyä, mutta nostaa taajuutta."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AUDIO_VOLUME,
    "Äänenvoimakkuuden lisäys (dB)"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_AUDIO_VOLUME,
    "Äänenvoimakkuus (desibeleinä). 0 dB on normaali voimakkuus, ja voimakkuutta ei lisätä."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_HELP_AUDIO_VOLUME,
+   "Äänenvoimakkuus desibeleinä. 0 dB on normaali, jota ei vahvisteta. Asetusta voi muuttaa pikanäppäimillä."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AUDIO_MIXER_VOLUME,
@@ -2837,6 +2855,14 @@ MSG_HASH(
    MENU_ENUM_LABEL_VALUE_AUDIO_STREAM_STATE_PLAYING,
    "Tila: Toistetaan"
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_AUDIO_STREAM_STATE_PLAYING_LOOPED,
+   "Tila: Toistetaan (Silmukoitu)"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_AUDIO_STREAM_STATE_PLAYING_SEQUENTIAL,
+   "Tila: Toistetaan (Peräkkäinen)"
+   )
 
 /* Settings > Audio > Menu Sounds */
 
@@ -2897,6 +2923,10 @@ MSG_HASH(
    )
 #if defined(HAVE_DINPUT) || defined(HAVE_WINRAWINPUT)
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_NOWINKEY_ENABLE,
+   "Poista Windows-pikanäppäimet käytöstä (uudelleenkäynnistys vaaditaan)"
+   )
+MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_NOWINKEY_ENABLE,
    "Pidä Win-näppäinyhdistelmät sovelluksen sisällä."
    )
@@ -2946,6 +2976,10 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PAUSE_ON_DISCONNECT,
    "Keskeytä sisältö kun yhteys ohjaimeen katkeaa"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_PAUSE_ON_DISCONNECT,
+   "Keskeytä sisältö kun yhteys mihin tahansa ohjaimeen katkeaa. Start-painike jatkaa."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_BUTTON_AXIS_THRESHOLD,
@@ -3177,8 +3211,16 @@ MSG_HASH(
    "Pikanäppäimen käyttöönoton viive (kuvissa)"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_HOTKEY_DEVICE_MERGE,
+   "Pikanäppäimen ohjaintyypin yhdistys"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_HOTKEY_DEVICE_MERGE,
+   "Estä kaikki pikanäppäimet sekä näppäimistöstä että ohjaimesta, jos kummalla tahansa ohjaintyypillä on pikanäppäin asetettu."
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_MENU_ENUM_TOGGLE_GAMEPAD_COMBO,
-   "Valikon vaihto (Ohjaimen painike yhdistelmä)"
+   "Valikon vaihto (ohjainpainikeyhdistelmä)"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_MENU_ENUM_TOGGLE_GAMEPAD_COMBO,
@@ -13468,7 +13510,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_REBOOT,
-   "Käynnistä uudelleen"
+   "Käynnistä laite uudelleen"
    )
 
 /* Environment Specific Settings */

@@ -69,6 +69,14 @@
 #define DEFAULT_ASPECT_RATIO 1.3333f
 #endif
 
+#define DEFAULT_VIEWPORT_BIAS_X 0.5
+#define DEFAULT_VIEWPORT_BIAS_Y 0.5
+
+#if defined(RARCH_MOBILE)
+#define DEFAULT_VIEWPORT_BIAS_PORTRAIT_X 0.5
+#define DEFAULT_VIEWPORT_BIAS_PORTRAIT_Y 0.0
+#endif
+
 #if defined(GEKKO)
 #define DEFAULT_MOUSE_SCALE 1
 #endif
@@ -1685,13 +1693,17 @@
 /* Only applies to Android 7.0 (API 24) and up */
 #define DEFAULT_SUSTAINED_PERFORMANCE_MODE false
 
-#if defined(ANDROID)
+#if defined(ANDROID) || defined(IOS)
 #define DEFAULT_VIBRATE_ON_KEYPRESS true
 #else
 #define DEFAULT_VIBRATE_ON_KEYPRESS false
 #endif
 
+#if defined(IOS)
+#define DEFAULT_ENABLE_DEVICE_VIBRATION true
+#else
 #define DEFAULT_ENABLE_DEVICE_VIBRATION false
+#endif
 
 /* Defines the strength of rumble effects
  * on OpenDingux devices */

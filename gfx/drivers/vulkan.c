@@ -3318,6 +3318,7 @@ static void *vulkan_init(const video_info_t *video,
    int interval                       = 0;
    unsigned temp_width                = 0;
    unsigned temp_height               = 0;
+   bool force_fullscreen              = false;
    const gfx_ctx_driver_t *ctx_driver = NULL;
    settings_t *settings               = config_get_ptr();
 #ifdef VULKAN_HDR_SWAPCHAIN
@@ -3351,6 +3352,13 @@ static void *vulkan_init(const video_info_t *video,
       vk->ctx_driver->get_video_size(vk->ctx_data,
             &mode_width, &mode_height);
 
+   if (!video->fullscreen && !vk->ctx_driver->has_windowed)
+   {
+      RARCH_DBG("[Vulkan]: Config requires windowed mode, but context driver does not support it. "
+                "Forcing fullscreen for this session.\n");
+      force_fullscreen = true;
+   }
+
    full_x                             = mode_width;
    full_y                             = mode_height;
    mode_width                         = 0;
@@ -3376,10 +3384,16 @@ static void *vulkan_init(const video_info_t *video,
       win_width  = full_x;
       win_height = full_y;
    }
+   /* If fullscreen had to be forced, video->width/height is incorrect */
+   else if (force_fullscreen)
+   {
+      win_width  = settings->uints.video_fullscreen_x;
+      win_height = settings->uints.video_fullscreen_y;
+   }
 
    if (     !vk->ctx_driver->set_video_mode
          || !vk->ctx_driver->set_video_mode(vk->ctx_data,
-            win_width, win_height, video->fullscreen))
+            win_width, win_height, (video->fullscreen || force_fullscreen)))
    {
       RARCH_ERR("[Vulkan]: Failed to set video mode.\n");
       goto error;
@@ -3397,6 +3411,8 @@ static void *vulkan_init(const video_info_t *video,
    video_driver_get_size(&temp_width, &temp_height);
    vk->video_width       = temp_width;
    vk->video_height      = temp_height;
+   vk->translate_x       = 0.0;
+   vk->translate_y       = 0.0;
 
    RARCH_LOG("[Vulkan]: Using resolution %ux%u.\n", temp_width, temp_height);
 
@@ -3412,7 +3428,7 @@ static void *vulkan_init(const video_info_t *video,
       vk->flags         |=  VK_FLAG_VSYNC;
    else
       vk->flags         &= ~VK_FLAG_VSYNC;
-   if (video->fullscreen)
+   if (video->fullscreen || force_fullscreen)
       vk->flags         |=  VK_FLAG_FULLSCREEN;
    else
       vk->flags         &= ~VK_FLAG_FULLSCREEN;
@@ -3748,25 +3764,40 @@ static void vulkan_set_projection(vk_t *vk,
          0.0f,     0.0f,    0.0f,    0.0f ,
          0.0f,     0.0f,    0.0f,    1.0f }
    };
+   math_matrix_4x4 trn     = {
+      {  1.0f,     0.0f,    0.0f,    0.0f ,
+         0.0f,     1.0f,    0.0f,    0.0f ,
+         0.0f,     0.0f,    1.0f,    0.0f ,
+         vk->translate_x/(float)vk->vp.width,
+         vk->translate_y/(float)vk->vp.height,
+         0.0f,
+         1.0f }
+   };
+   math_matrix_4x4 tmp     = {
+      {  1.0f,     0.0f,    0.0f,    0.0f ,
+         0.0f,     1.0f,    0.0f,    0.0f ,
+         0.0f,     0.0f,    1.0f,    0.0f ,
+         0.0f,     0.0f,    0.0f,    1.0f }
+   };
 
    /* Calculate projection. */
    matrix_4x4_ortho(vk->mvp_no_rot, ortho->left, ortho->right,
          ortho->bottom, ortho->top, ortho->znear, ortho->zfar);
 
    if (!allow_rotate)
+      tmp = vk->mvp_no_rot;
+   else
    {
-      vk->mvp = vk->mvp_no_rot;
-      return;
+      radians                 = M_PI * vk->rotation / 180.0f;
+      cosine                  = cosf(radians);
+      sine                    = sinf(radians);
+      MAT_ELEM_4X4(rot, 0, 0) = cosine;
+      MAT_ELEM_4X4(rot, 0, 1) = -sine;
+      MAT_ELEM_4X4(rot, 1, 0) = sine;
+      MAT_ELEM_4X4(rot, 1, 1) = cosine;
+      matrix_4x4_multiply(tmp, rot, vk->mvp_no_rot);
    }
-
-   radians                 = M_PI * vk->rotation / 180.0f;
-   cosine                  = cosf(radians);
-   sine                    = sinf(radians);
-   MAT_ELEM_4X4(rot, 0, 0) = cosine;
-   MAT_ELEM_4X4(rot, 0, 1) = -sine;
-   MAT_ELEM_4X4(rot, 1, 0) = sine;
-   MAT_ELEM_4X4(rot, 1, 1) = cosine;
-   matrix_4x4_multiply(vk->mvp, rot, vk->mvp_no_rot);
+   matrix_4x4_multiply(vk->mvp, trn, tmp);
 }
 
 static void vulkan_set_rotation(void *data, unsigned rotation)
@@ -3800,7 +3831,6 @@ static void vulkan_set_viewport(void *data, unsigned viewport_width,
    struct video_ortho ortho  = {0, 1, 0, 1, -1, 1};
    settings_t *settings      = config_get_ptr();
    bool video_scale_integer  = settings->bools.video_scale_integer;
-   unsigned aspect_ratio_idx = settings->uints.video_aspect_ratio_idx;
    vk_t *vk                  = (vk_t*)data;
 
    if (vk->ctx_driver->translate_aspect)
@@ -3812,55 +3842,16 @@ static void vulkan_set_viewport(void *data, unsigned viewport_width,
       video_viewport_get_scaled_integer(&vk->vp,
             viewport_width, viewport_height,
             video_driver_get_aspect_ratio(),
-            vk->flags & VK_FLAG_KEEP_ASPECT);
+            vk->flags & VK_FLAG_KEEP_ASPECT,
+            true);
       viewport_width  = vk->vp.width;
       viewport_height = vk->vp.height;
    }
    else if ((vk->flags & VK_FLAG_KEEP_ASPECT) && !force_full)
    {
-      float desired_aspect           = video_driver_get_aspect_ratio();
-#if defined(HAVE_MENU)
-      if (aspect_ratio_idx == ASPECT_RATIO_CUSTOM)
-      {
-         video_viewport_t *custom_vp = &settings->video_viewport_custom;
-         /* Vulkan has top-left origin viewport. */
-         x                           = custom_vp->x;
-         y                           = custom_vp->y;
-         viewport_width              = custom_vp->width;
-         viewport_height             = custom_vp->height;
-      }
-      else
-#endif
-      {
-         float delta;
-
-         if (fabsf(device_aspect - desired_aspect) < 0.0001f)
-         {
-            /* If the aspect ratios of screen and desired aspect
-             * ratio are sufficiently equal (floating point stuff),
-             * assume they are actually equal.
-             */
-         }
-         else if (device_aspect > desired_aspect)
-         {
-            delta          = (desired_aspect / device_aspect - 1.0f)
-               / 2.0f + 0.5f;
-            x              = (int)roundf(viewport_width * (0.5f - delta));
-            viewport_width = (unsigned)roundf(2.0f * viewport_width * delta);
-         }
-         else
-         {
-            delta           = (device_aspect / desired_aspect - 1.0f)
-               / 2.0f + 0.5f;
-            y               = (int)roundf(viewport_height * (0.5f - delta));
-            viewport_height = (unsigned)roundf(2.0f * viewport_height * delta);
-         }
-      }
-
-      vk->vp.x      = x;
-      vk->vp.y      = y;
-      vk->vp.width  = viewport_width;
-      vk->vp.height = viewport_height;
+      video_viewport_get_scaled_aspect2(&vk->vp, viewport_width, viewport_height, true, device_aspect, video_driver_get_aspect_ratio());
+      viewport_width  = vk->vp.width;
+      viewport_height = vk->vp.height;
    }
    else
    {
@@ -3870,11 +3861,20 @@ static void vulkan_set_viewport(void *data, unsigned viewport_width,
       vk->vp.height = viewport_height;
    }
 
-#if defined(RARCH_MOBILE)
-   /* In portrait mode, we want viewport to gravitate to top of screen. */
-   if (device_aspect < 1.0f)
-      vk->vp.y = 0;
-#endif
+   if (vk->vp.x < 0)
+   {
+      vk->translate_x = (float)vk->vp.x;
+      vk->vp.x = 0.0;
+   }
+   else
+      vk->translate_x = 0.0;
+   if (vk->vp.y < 0)
+   {
+      vk->translate_y = (float)vk->vp.y;
+      vk->vp.y = 0.0;
+   }
+   else
+      vk->translate_y = 0.0;
 
    vulkan_set_projection(vk, &ortho, allow_rotate);
 
