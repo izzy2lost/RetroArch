@@ -13,28 +13,32 @@ on:
         default: 'RetroArch'
 
 jobs:
-  build:
+
+  msvc:
     runs-on: windows-2022
-
-    env:
-      SolutionPath: "pkg/msvc-uwp/RetroArch-msvcUWP.sln"
-      Platform: x64
-      Configuration: Release
-      BuildMode: SideLoadOnly
-      AppxBundle: Never
-      ProjectPath: "pkg/msvc-uwp/RetroArch-msvcUWP/RetroArch-msvcUWP.vcxproj"
-      ProjectDirectory: "./pkg/msvc-uwp/RetroArch-msvcUWP"
-      PackageOutputRootDir: C:\AppPackage
-      PackageOutputDir: "pkg/msvc-uwp/RetroArch-msvcUWP"
-
+    strategy:
+      matrix:
+        version: [UWP, 2019, 2022]
+        configuration: [Debug, Release]
+        platform: [x64]
+        exclude:
+          - version: UWP
+            configuration: Debug
+        include:
+          - version: UWP
+            configuration: ReleaseAngle
+            platform: x64
+        # Qt and Cg builds are excluded for now
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          submodules: recursive
+      - uses: actions/checkout@v4
 
-      - name: Setup MSBuild
+      - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v1
+
+      - name: Compile RA
+        working-directory: "${{github.workspace}}/pkg/msvc${{ matrix.version == 'UWP' && '-uwp' || ''}}"
+        run: |
+          msbuild -p:"Configuration=${{matrix.configuration}}" -p:"Platform=${{matrix.platform}}" .\RetroArch-msvc${{matrix.version}}.sln
 
       - name: Generate Self-Signed Certificate
         id: generate_cert
