@@ -36,7 +36,10 @@ jobs:
         
       - name: Checkout Repository
         uses: actions/checkout@v3
-
+        with:
+          submodules: true 
+          fetch-depth: 0
+        
       - name: Generate Self-Signed Certificate
         id: generate_cert
         run: |
