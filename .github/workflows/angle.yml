@@ -50,14 +50,7 @@ jobs:
       - name: Set Package Name
         id: set_package_name
         run: |
-          echo "PACKAGE_NAME=${{ github.event.inputs.package_name }}_${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
-
-      - name: Download and Extract File
-        run: |
-          Invoke-WebRequest -Uri "https://drive.google.com/uc?export=download&id=1bZWta3dHaHQt4jTMnN9EK2-eMUJr6-jS" -OutFile "downloaded_file.zip"
-          Expand-Archive -Path "downloaded_file.zip" -DestinationPath "pkg/msvc-uwp/RetroArch-msvcUWP/cores/x64/cores" -Force
-          Remove-Item "pkg/msvc-uwp/RetroArch-msvcUWP/cores/x64/cores/.empty" -Force
-        shell: pwsh
+          echo "PACKAGE_NAME=${{ github.event.inputs.package_name }}_${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV   
 
       - name: App Build
         run: |
