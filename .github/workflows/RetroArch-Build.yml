@@ -11,30 +11,32 @@ on:
         description: 'Package Name'
         required: true
         default: 'RetroArch'
-
+        
 jobs:
+  build:
+    runs-on: windows-latest
+    
+    env:
+      SolutionPath: pkg/msvc-uwp/RetroArch-msvcUWP.sln
+      Platform: x64
+      Configuration: Release
+      BuildMode: SideLoadOnly
+      AppxBundle: Never      
+      ProjectPath: pkg/msvc-uwp/RetroArch-msvcUWP/RetroArch-msvcUWP.vcxproj
+      ProjectDirectory: .\pkg/msvc-uwp/RetroArch-msvcUWP
+      PackageOutputRootDir: C:\AppPackage
+      PackageOutputDir: RetroArch
 
-  msvc:
-    runs-on: windows-2022
-    strategy:
-      matrix:
-        version: [UWP, 2019, 2022]
-        configuration: [Debug, Release]
-        platform: [x64]
-        exclude:
-          - version: UWP
-            configuration: Debug
-        include:
-          - version: UWP
-            configuration: ReleaseAngle
-            platform: x64
-        # Qt and Cg builds are excluded for now
-    steps:
-      - uses: actions/checkout@v4
-
+    steps:            
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1
-      
+        uses: microsoft/setup-msbuild@v1.1
+        
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.1.1
+        
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
       - name: Generate Self-Signed Certificate
         id: generate_cert
         run: |
@@ -47,10 +49,17 @@ jobs:
         run: |
           echo "PACKAGE_NAME=${{ github.event.inputs.package_name }}_${{ github.event.inputs.tag_name }}" >> $GITHUB_ENV
 
-      - name: Compile RA
-        working-directory: "${{github.workspace}}/pkg/msvc${{ matrix.version == 'UWP' && '-uwp' || ''}}"
+      - name: App Build
         run: |
-          msbuild -p:"Configuration=${{matrix.configuration}}" -p:"Platform=${{matrix.platform}}" .\RetroArch-msvc${{matrix.version}}.sln
+          msbuild $env:SolutionPath `
+            /p:Platform=$env:Platform `
+            /p:Configuration=$env:Configuration `
+            /p:UapAppxPackageBuildMode=$env:BuildMode `
+            /p:AppxBundle=$env:AppxBundle `
+            /p:PackageCertificateThumbprint="${{ env.THUMBPRINT }}" `
+            /p:AppxPackageTestDir="${{ env.PackageOutputRootDir }}\${{ env.PACKAGE_NAME }}" `
+            /restore
+        shell: pwsh
 
       - name: Clean the Package
         run: |
@@ -70,7 +79,7 @@ jobs:
             exit 1
           }
         shell: pwsh
-
+          
       - name: Create Archive
         run: |
           $PackagePath = "${{ env.PackageOutputRootDir }}\${{ env.PACKAGE_NAME }}"
@@ -84,9 +93,9 @@ jobs:
             exit 1
           }
         shell: pwsh
-
+       
       - name: Upload Build Artifact
-        uses: actions/upload-artifact@v4.3.4
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ github.event.inputs.package_name }} Build
           path: ${{ env.PackageOutputRootDir }}\${{ env.PACKAGE_NAME }}.zip
