@@ -6,7 +6,7 @@ on:
       logo:
         description: "Path to the custom logo image"
         required: true
-        default: "custom-logo.png"  # Specify the path to your logo
+        default: "custom-logo.png"
 
 jobs:
   replace-icons:
@@ -25,54 +25,54 @@ jobs:
 
       - name: Replace images with custom logo
         run: |
-          # Replace each image in Assets.zip with resized versions of the custom logo
-          convert ${{ github.event.inputs.logo }} -resize 310x150 -depth 32 assets/Wide310x150Logo.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 388x188 -depth 32 assets/Wide310x150Logo.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 465x225 -depth 32 assets/Wide310x150Logo.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 620x300 -depth 32 assets/Wide310x150Logo.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 1240x600 -depth 32 assets/Wide310x150Logo.scale-400.png
+          # Replace each image with resized versions, enforcing exact sizes
+          convert ${{ github.event.inputs.logo }} -resize 310x150 -extent 310x150 assets/Wide310x150Logo.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 388x188 -extent 388x188 assets/Wide310x150Logo.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 465x225 -extent 465x225 assets/Wide310x150Logo.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 620x300 -extent 620x300 assets/Wide310x150Logo.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 1240x600 -extent 1240x600 assets/Wide310x150Logo.scale-400.png
 
-          convert ${{ github.event.inputs.logo }} -resize 150x150 -depth 32 assets/Square150x150Logo.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 188x188 -depth 32 assets/Square150x150Logo.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 225x225 -depth 32 assets/Square150x150Logo.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 300x300 -depth 32 assets/Square150x150Logo.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 600x600 -depth 32 assets/Square150x150Logo.scale-400.png
+          convert ${{ github.event.inputs.logo }} -resize 150x150 -extent 150x150 assets/Square150x150Logo.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 188x188 -extent 188x188 assets/Square150x150Logo.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 225x225 -extent 225x225 assets/Square150x150Logo.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 300x300 -extent 300x300 assets/Square150x150Logo.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 600x600 -extent 600x600 assets/Square150x150Logo.scale-400.png
 
-          convert ${{ github.event.inputs.logo }} -resize 44x44 -depth 32 assets/Square44x44Logo.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 55x55 -depth 32 assets/Square44x44Logo.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 66x66 -depth 32 assets/Square44x44Logo.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 88x88 -depth 32 assets/Square44x44Logo.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 176x176 -depth 32 assets/Square44x44Logo.scale-400.png
+          convert ${{ github.event.inputs.logo }} -resize 44x44 -extent 44x44 assets/Square44x44Logo.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 55x55 -extent 55x55 assets/Square44x44Logo.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 66x66 -extent 66x66 assets/Square44x44Logo.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 88x88 -extent 88x88 assets/Square44x44Logo.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 176x176 -extent 176x176 assets/Square44x44Logo.scale-400.png
 
-          convert ${{ github.event.inputs.logo }} -resize 16x16 -depth 32 assets/Square44x44Logo.targetsize-16.png
-          convert ${{ github.event.inputs.logo }} -resize 24x24 -depth 32 assets/Square44x44Logo.targetsize-24.png
-          convert ${{ github.event.inputs.logo }} -resize 32x32 -depth 32 assets/Square44x44Logo.targetsize-32.png
-          convert ${{ github.event.inputs.logo }} -resize 48x48 -depth 32 assets/Square44x44Logo.targetsize-48.png
-          convert ${{ github.event.inputs.logo }} -resize 256x256 -depth 32 assets/Square44x44Logo.targetsize-256.png
+          convert ${{ github.event.inputs.logo }} -resize 16x16 -extent 16x16 assets/Square44x44Logo.targetsize-16.png
+          convert ${{ github.event.inputs.logo }} -resize 24x24 -extent 24x24 assets/Square44x44Logo.targetsize-24.png
+          convert ${{ github.event.inputs.logo }} -resize 32x32 -extent 32x32 assets/Square44x44Logo.targetsize-32.png
+          convert ${{ github.event.inputs.logo }} -resize 48x48 -extent 48x48 assets/Square44x44Logo.targetsize-48.png
+          convert ${{ github.event.inputs.logo }} -resize 256x256 -extent 256x256 assets/Square44x44Logo.targetsize-256.png
 
-          convert ${{ github.event.inputs.logo }} -resize 50x50 -depth 32 assets/StoreLogo.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 63x63 -depth 32 assets/StoreLogo.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 75x75 -depth 32 assets/StoreLogo.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 100x100 -depth 32 assets/StoreLogo.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 200x200 -depth 32 assets/StoreLogo.scale-400.png
+          convert ${{ github.event.inputs.logo }} -resize 50x50 -extent 50x50 assets/StoreLogo.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 63x63 -extent 63x63 assets/StoreLogo.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 75x75 -extent 75x75 assets/StoreLogo.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 100x100 -extent 100x100 assets/StoreLogo.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 200x200 -extent 200x200 assets/StoreLogo.scale-400.png
 
-          convert ${{ github.event.inputs.logo }} -resize 310x310 -depth 32 assets/LargeTile.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 388x388 -depth 32 assets/LargeTile.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 465x465 -depth 32 assets/LargeTile.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 620x620 -depth 32 assets/LargeTile.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 1240x1240 -depth 32 assets/LargeTile.scale-400.png
+          convert ${{ github.event.inputs.logo }} -resize 310x310 -extent 310x310 assets/LargeTile.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 388x388 -extent 388x388 assets/LargeTile.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 465x465 -extent 465x465 assets/LargeTile.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 620x620 -extent 620x620 assets/LargeTile.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 1240x1240 -extent 1240x1240 assets/LargeTile.scale-400.png
 
-          convert ${{ github.event.inputs.logo }} -resize 71x71 -depth 32 assets/SmallTile.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 89x89 -depth 32 assets/SmallTile.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 107x107 -depth 32 assets/SmallTile.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 142x142 -depth 32 assets/SmallTile.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 284x284 -depth 32 assets/SmallTile.scale-400.png
+          convert ${{ github.event.inputs.logo }} -resize 71x71 -extent 71x71 assets/SmallTile.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 89x89 -extent 89x89 assets/SmallTile.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 107x107 -extent 107x107 assets/SmallTile.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 142x142 -extent 142x142 assets/SmallTile.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 284x284 -extent 284x284 assets/SmallTile.scale-400.png
 
-          convert ${{ github.event.inputs.logo }} -resize 620x300 -depth 32 -background none -gravity center assets/SplashScreen.scale-100.png
-          convert ${{ github.event.inputs.logo }} -resize 775x375 -depth 32 -background none -gravity center assets/SplashScreen.scale-125.png
-          convert ${{ github.event.inputs.logo }} -resize 930x450 -depth 32 -background none -gravity center assets/SplashScreen.scale-150.png
-          convert ${{ github.event.inputs.logo }} -resize 1240x600 -depth 32 -background none -gravity center assets/SplashScreen.scale-200.png
-          convert ${{ github.event.inputs.logo }} -resize 2480x1200 -depth 32 -background none -gravity center assets/SplashScreen.scale-400.png
+          convert ${{ github.event.inputs.logo }} -resize 620x300 -extent 620x300 -background none -gravity center assets/SplashScreen.scale-100.png
+          convert ${{ github.event.inputs.logo }} -resize 775x375 -extent 775x375 -background none -gravity center assets/SplashScreen.scale-125.png
+          convert ${{ github.event.inputs.logo }} -resize 930x450 -extent 930x450 -background none -gravity center assets/SplashScreen.scale-150.png
+          convert ${{ github.event.inputs.logo }} -resize 1240x600 -extent 1240x600 -background none -gravity center assets/SplashScreen.scale-200.png
+          convert ${{ github.event.inputs.logo }} -resize 2480x1200 -extent 2480x1200 -background none -gravity center assets/SplashScreen.scale-400.png
 
       - name: Repack into ZIP
         run: |
