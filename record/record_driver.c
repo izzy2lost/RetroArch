@@ -31,6 +31,8 @@
 #include "../defaults.h"
 
 #include "record_driver.h"
+#include "drivers/record_ffmpeg.h"
+#include "drivers/record_wav.h"
 
 static recording_state_t recording_state = {0};
 
@@ -47,6 +49,7 @@ const record_driver_t *record_drivers[] = {
 #ifdef HAVE_FFMPEG
    &record_ffmpeg,
 #endif
+   &record_wav,
    &record_null,
    NULL,
 };
@@ -129,7 +132,7 @@ static void recording_driver_free_state(void)
    recording_state.gpu_width     = 0;
    recording_state.gpu_height    = 0;
    recording_state.width         = 0;
-   recording_stte.height         = 0;
+   recording_state.height        = 0;
 }
 #endif
 

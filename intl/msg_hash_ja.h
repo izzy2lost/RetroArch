@@ -1235,7 +1235,15 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_SYNC_CONFIGS,
    "同期: 設定ファイル"
-   )      
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_SYNC_THUMBS,
+   "同期: サムネイル画像"
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_SYNC_SYSTEM,
+   "同期: システムファイル"
+   )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_CLOUD_SYNC_SYNC_SAVES,
    "有効にすると、セーブ/ステートがクラウドに同期されます。"
@@ -1245,9 +1253,17 @@ MSG_HASH(
    "有効にすると、設定ファイルがクラウドに同期されます。"
    )
 MSG_HASH(
+   MENU_ENUM_SUBLABEL_CLOUD_SYNC_SYNC_THUMBS,
+   "有効にすると、サムネイル画像がクラウドに同期されます。カスタムサムネイル画像の大規模なコレクションを除いて、一般的にはサムネイルダウンローダーを使用することが推奨されます。"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_CLOUD_SYNC_SYNC_SYSTEM,
+   "有効にすると、システムファイルがクラウドに同期されます。同期にかかる時間が大幅に増加する可能性があります。注意して使用してください。"
+   )
+MSG_HASH(
    MENU_ENUM_SUBLABEL_CLOUD_SYNC_DESTRUCTIVE,
    "無効にすると、ファイルは上書きまたは削除される前にバックアップフォルダに移動されます。"
-   )      
+   )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CLOUD_SYNC_DRIVER,
    "クラウド同期のバックエンド"
@@ -2004,7 +2020,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SHADER_SUBFRAMES,
-   "シェーダー間に追加のシェーダーフレームを挿入します。シェーダーで実際のコンテンツフレームレートよりも高い FPS で動作するエフェクトを実行できるようになります。現在のディスプレイ Hz に対応するオプションを設定する必要があります。1 以上のスワップ間隔、黒フレーム挿入、正確なフレームレートに同期と組み合わせないでください。"
+   "フレーム間に追加のシェーダーフレームを挿入します。シェーダーで実際のコンテンツフレームレートよりも高い FPS で動作するエフェクトを実行できるようになります。現在のディスプレイ Hz に対応するオプションを設定する必要があります。1 以上のスワップ間隔、黒フレーム挿入、正確なフレームレートに同期と組み合わせないでください。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_HELP_VIDEO_SHADER_SUBFRAMES,
@@ -2101,7 +2117,7 @@ MSG_HASH(
 #if defined(DINGUX)
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_DINGUX_IPU_FILTER_TYPE,
-   "画像の補間"
+   "画像補間"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_DINGUX_IPU_FILTER_TYPE,
@@ -2498,16 +2514,8 @@ MSG_HASH(
    "整数倍拡大"
    )
 MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER,
-   "整数刻みでのみビデオを拡大します。基本となるサイズはシステムによって報告される形状とアスペクト比に依存します。[強制アスペクト比] が設定されていない場合、X/Y はそれぞれ独立して整数倍で拡大されます。"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_OVERSCALE,
-   "整数倍拡大のオーバースケーリング"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_OVERSCALE,
-   "整数倍拡大で少数を切り捨てる代わりに、次の大きな整数に切り上げるように強制します。"
+   MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING_SMART,
+   "スマート"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_ASPECT_RATIO_INDEX,
@@ -2716,28 +2724,8 @@ MSG_HASH(
    "実行速度がターゲットフレームレートを下回るまで垂直同期が有効になります。実行速度がリアルタイムを下回ったときのカクつきを最小限に抑え、電力効率を向上させます。"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FRAME_DELAY,
-   "フレーム遅延 (ms)"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_FRAME_DELAY,
-   "ビデオのカクつきのリスクが高くなる代償として遅延を軽減します。ビデオプレゼンテーションの後とコアフレームの前に、ミリ秒単位の遅延を追加します。"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_HELP_VIDEO_FRAME_DELAY,
-   "コアを実行する前に、ビデオプレゼンテーションの後に何ミリ秒遅延させるかを設定します。カクつきのリスクが高くなる代償として軽減します。最大値は %d です。"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_FRAME_DELAY_AUTO,
    "自動フレーム遅延"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_FRAME_DELAY_AUTO,
-   "将来のフレームドロップを防ぐために、有効な [フレーム遅延] を一時的に減少させます。開始点は [フレーム遅延] が ０ のときの半フレームタイムです。"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_HELP_VIDEO_FRAME_DELAY_AUTO,
-   "ターゲットリフレッシュレートが安定するまで、効果的な [フレーム遅延] を一時的に減少させます。[フレーム遅延] が 0 の場合は、フレーム時間の半分から測定を開始します。例えば、NTSC の場合は 8、PAL の場合は 10 です。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_FRAME_DELAY_AUTOMATIC,
@@ -3281,6 +3269,14 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_REMAP_BINDS_ENABLE,
    "入力割り当てを現在のコアに設定されているリマップ設定で上書きします。"
    )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_REMAP_SORT_BY_CONTROLLER_ENABLE,
+   "Sort Remaps By Gamepad"
+   )   
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_REMAP_SORT_BY_CONTROLLER_ENABLE,
+   "Remaps will only apply to the active gamepad in which they were saved."
+   )   
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_INPUT_AUTODETECT_ENABLE,
    "自動設定"
@@ -4363,14 +4359,6 @@ MSG_HASH(
    "現在のコアは確定的なステートセーブの対応がないため、先行実行との互換性がありません。"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RUN_AHEAD_ENABLED,
-   "先行実行して遅延を減らす"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_RUN_AHEAD_ENABLED,
-   "コアロジックを 1 フレーム以上先に実行し、ステートをロードし直すことで認識された入力遅延を軽減します。"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RUN_AHEAD_FRAMES,
    "先行実行するフレーム数"
    )
@@ -4378,14 +4366,8 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_RUN_AHEAD_FRAMES,
    "先行実行するフレームの数です。ゲーム内部のラグフレーム数を超えると、ジッターなどのゲームプレイの問題が発生します。"
    )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_RUN_AHEAD_SECONDARY_INSTANCE,
-   "先行実行に 2 番目のインスタンスを使用"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_RUN_AHEAD_SECONDARY_INSTANCE,
-   "RetroArch コアのセカンダリインスタンスを使用して先行実行します。ステートロードによるオーディオの問題を防止します。"
-   )
+#if !(defined(HAVE_DYNAMIC) || defined(HAVE_DYLIB))
+#endif
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_RUN_AHEAD_HIDE_WARNINGS,
    "先行実行の警告を隠す"
@@ -4395,36 +4377,12 @@ MSG_HASH(
    "先行実行を使用する際、コアがステートセーブに対応していない場合に表示される警告メッセージを非表示にします。"
    )
 MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_PREEMPT_UNSUPPORTED,
-   "[先制フレームを利用できません]"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_PREEMPT_UNSUPPORTED,
-   "現在のコアは確定的なステートセーブの対応がないため、先制フレームとの互換性がありません。"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_PREEMPT_ENABLE,
-   "先制フレームを実行"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_PREEMPT_ENABLE,
-   "コントローラーの状態が変更されたとき、最新の入力でコアロジックを再実行します。先行実行より高速ですが、ステートロードでコアに発生する可能性があるオーディオの問題を防止できません。"
-   )
-MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PREEMPT_FRAMES,
    "先制フレーム数"
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_PREEMPT_FRAMES,
    "再実行するフレームの数です。ゲーム内部のラグフレームの数を越えた場合、ジッターなどのゲームプレイの問題が発生します。"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_PREEMPT_HIDE_WARNINGS,
-   "先制フレームの警告を隠す"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_PREEMPT_HIDE_WARNINGS,
-   "コアが先制フレームと互換性がない場合に表示される警告メッセージを隠します。"
    )
 
 /* Settings > Core */
@@ -6058,7 +6016,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MENU_INSERT_DISK_RESUME,
-   "新しいディスクが挿入またはロードされたあと、自動的にメニューを閉じてコンテンツを再開します。"
+   "新しいディスクが挿入またはロードされた際に、自動的にメニューを閉じてコンテンツを再開します。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_QUIT_ON_CLOSE_CONTENT,
@@ -6872,6 +6830,14 @@ MSG_HASH(
    "[ユーザー] を表示"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_ICON_THUMBNAILS,
+   "プレイリストアイコン"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_ICON_THUMBNAILS,
+   "表示するプレイリストアイコンサムネイルの種類です。"
+   )
+MSG_HASH(
    MENU_ENUM_SUBLABEL_SETTINGS_SHOW_USER,
    "[ユーザー] 設定を表示します。"
    )
@@ -6965,7 +6931,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MENU_TICKER_SPEED,
-   "長いメニューテキストをスクロールするときのアニメーション速度です。"
+   "長いメニューテキストをスクロールする際のアニメーション速度です。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_TICKER_SMOOTH,
@@ -7791,7 +7757,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_PLAYLIST_SHOW_ENTRY_IDX,
-   "プレイリストを表示するときにエントリー番号を表示します。表示形式は現在選択されているメニュードライバに依存します。"
+   "プレイリストを表示する際にエントリー番号を表示します。表示形式は現在選択されているメニュードライバに依存します。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_SUBLABEL_RUNTIME_TYPE,
@@ -7857,7 +7823,15 @@ MSG_HASH(
    MENU_ENUM_SUBLABEL_PLAYLIST_USE_FILENAME,
    "有効にすると、ラベルではなくエントリーのファイル名でサムネイルを検索します。"
    )
-   MSG_HASH(
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_PLAYLIST_ALLOW_NON_PNG,
+   "サムネイル用の画像にすべての拡張子を含めることを許可する"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_PLAYLIST_ALLOW_NON_PNG,
+   "有効にすると、RetroArch が対応するすべての画像 (jpeg など) をローカルサムネイルとして追加できます。パフォーマンスに影響を与える可能性があります。"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANAGE,
    "管理"
    )
@@ -7870,7 +7844,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_PLAYLIST_MANAGER_DEFAULT_CORE,
-   "既存のコアの関連付けを持たないプレイリストエントリーを介してコンテンツを起動するときに使用するコアを指定します。"
+   "コアの関連付けが存在しないプレイリストエントリーからコンテンツを起動する際に使用するコアを指定します。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PLAYLIST_MANAGER_RESET_CORES,
@@ -8541,7 +8515,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MANUAL_CONTENT_SCAN_CORE_NAME,
-   "スキャンしたコンテンツを起動するときに使用するデフォルトのコアを選択します。"
+   "スキャンしたコンテンツを起動する際に使用するデフォルトのコアを選択します。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MANUAL_CONTENT_SCAN_FILE_EXTS,
@@ -9379,7 +9353,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_CHEAT_APPLY_AFTER_TOGGLE,
-   "切り替えた時、ただちにチートを適用します。"
+   "チートのオン/オフを切り替えた際に、直ちに状態を反映します。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEAT_APPLY_CHANGES,
@@ -9797,7 +9771,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SHADER_NUM_PASSES,
-   "シェーダーパイプラインパスの数を増加または減少させます。各パイプラインパスに別々のシェーダーをバインドして、倍率とフィルタリングを設定できます。"
+   "シェーダーパイプラインパスの数を増加または減少させます。各パイプラインパスに別々のシェーダーを割り当てたり、倍率とフィルタリングを個別に設定することができます。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_HELP_VIDEO_SHADER_NUM_PASSES,
@@ -10059,10 +10033,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_CHEEVOS_SERVER_DISCONNECTED,
    "RetroAchievements サーバーにアクセスできません。成功するかアプリが閉じられるまで再試行します。"
-)
-MSG_HASH(
-   MENU_ENUM_LABEL_CHEEVOS_SERVER_RECONNECTED,
-   "すべての保留中のリクエストが RetroAchievements サーバーに同期されました。"
 )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_CHEEVOS_IDENTIFYING_GAME,
@@ -10578,6 +10548,10 @@ MSG_HASH(
    "タイトルスクリーン"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_THUMBNAIL_MODE_LOGOS,
+   "コンテンツロゴ"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SCROLL_NORMAL,
    "通常"
    )
@@ -11030,7 +11004,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MENU_RGUI_THUMBNAIL_DOWNSCALER,
-   "画面に合わせるために大きなサムネイルを縮小するときに使用されるリサンプリング方式です。"
+   "大きなサムネイルを画面に合わせて縮小する際に使用されるリサンプリング方式です。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MENU_RGUI_THUMBNAIL_DELAY,
@@ -11641,7 +11615,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_MATERIALUI_MENU_TRANSITION_ANIMATION,
-   "メニューの階層を移動するときにスムーズなアニメーション効果を有効にします。"
+   "メニューの階層を移動する際にスムーズなアニメーション効果を有効にします。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_MATERIALUI_MENU_THUMBNAIL_VIEW_PORTRAIT,
@@ -13446,10 +13420,6 @@ MSG_HASH(
    "新しい設定パスを推測できません。現在の時刻を使用してください。"
    )
 MSG_HASH(
-   MSG_CHEEVOS_HARDCORE_MODE_ENABLE,
-   "実績ハードコアモードが有効になりました。ステートセーブと巻き戻しが無効になります。"
-   )
-MSG_HASH(
    MSG_COMPARING_WITH_KNOWN_MAGIC_NUMBERS,
    "既知のマジックナンバーと比較しています..."
    )
@@ -14242,6 +14212,14 @@ MSG_HASH(
    "%s を %s に送信しました" /* Submitted [value] for [leaderboard name] */
    )
 MSG_HASH(
+   MSG_LEADERBOARD_RANK,
+   "ランク: %d" /* Rank: [leaderboard rank] */
+   )
+MSG_HASH(
+   MSG_LEADERBOARD_BEST,
+   "ベスト: %s" /* Best: [value] */
+   )
+MSG_HASH(
    MSG_CHANGE_THUMBNAIL_TYPE,
    "サムネイルの種類を変更"
    )
@@ -14636,6 +14614,14 @@ MSG_HASH(
 MSG_HASH(
    MSG_CHEEVOS_COMPLETED_GAME,
    "完了済み %s"
+   )
+MSG_HASH(
+   MSG_CHEEVOS_HARDCORE_MODE_ENABLE,
+   "実績ハードコアモードが有効になりました。ステートセーブと巻き戻しが無効になります。"
+   )
+MSG_HASH(
+   MSG_CHEEVOS_GAME_HAS_NO_ACHIEVEMENTS,
+   "このゲームには実績がありません。"
    )
 MSG_HASH(
    MSG_RESAMPLER_QUALITY_LOWEST,
@@ -15130,14 +15116,6 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_LABEL_HELP_GAMEMODE_ENABLE,
    "Linux GameMode を有効にすることで、レイテンシを改善し、音割れの問題を修正し、最高のパフォーマンスを得るために CPU と GPU を自動的に設定することで全体的なパフォーマンスを最大化できます。\nGame Mode ソフトウェアをインストールする必要があります。GameMode のインストール方法については、https://github.com/FeralInteractive/gamemode を参照してください。"
-   )
-MSG_HASH(
-   MENU_ENUM_LABEL_VALUE_VIDEO_FRAME_REST,
-   "フレームレスト"
-   )
-MSG_HASH(
-   MENU_ENUM_SUBLABEL_VIDEO_FRAME_REST,
-   "フレーム提示のあと、できるだけスリープさせることで垂直同期の CPU 使用率の軽減を試みます。主にサードパーティのスキャンライン同期用に設計されています。"
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_PAL60_ENABLE,
