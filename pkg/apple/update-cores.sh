@@ -150,6 +150,7 @@ else
                 #blastem
                 bluemsx
                 bsnes
+                bsnes-jg
                 bsnes_hd_beta
                 cap32
                 crocods
@@ -158,6 +159,7 @@ else
                 dirksimple
                 dosbox_pure
                 DoubleCherryGB
+                doukutsu_rs
                 easyrpg
                 ep128emu_core
                 fbneo
@@ -176,6 +178,7 @@ else
                 gpsp
                 gw
                 handy
+                holani
                 kronos
                 mednafen_ngp
                 mednafen_pce
@@ -192,10 +195,12 @@ else
                 mesen-s
                 mgba
                 mojozork
+                mrboom
                 mu
                 mupen64plus_next
                 neocd
                 nestopia
+                noods
                 np2kai
                 numero
                 nxengine
@@ -242,6 +247,7 @@ else
                 virtualxt
                 wasm4
                 xrick
+                yabause
             )
             if [ "$PLATFORM" = "osx" ] ; then
                 exports+=(

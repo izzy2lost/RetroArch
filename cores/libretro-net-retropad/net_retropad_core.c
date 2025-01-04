@@ -162,13 +162,13 @@ static struct descriptor mouse = {
 };
 
 static struct descriptor pointer = {
-   .device = RETRO_DEVICE_POINTER/* | 0x10000*/,
+   .device = RETRO_DEVICE_POINTER,
    .port_min = 0,
    .port_max = 0,
    .index_min = 0,
-   .index_max = 0,
+   .index_max = 2,
    .id_min = RETRO_DEVICE_ID_POINTER_X,
-   .id_max = RETRO_DEVICE_ID_POINTER_COUNT
+   .id_max = RETRO_DEVICE_ID_POINTER_IS_OFFSCREEN
 };
 
 static struct descriptor lightgun = {
@@ -204,7 +204,7 @@ static struct descriptor *descriptors[] = {
 };
 
 static uint16_t analog_item_colors[32];
-static uint16_t sensor_item_colors[104];
+static uint16_t sensor_item_colors[107];
 
 static uint16_t combo_def[] =
 {
@@ -710,7 +710,7 @@ static void retropad_update_input(void)
                      }
                      else if (id == RETRO_DEVICE_ID_MOUSE_Y || id == RETRO_DEVICE_ID_LIGHTGUN_Y)
                      {
-                        int32_t large = pointer_y + (int16_t)state*273;
+                        int32_t large = pointer_y + (int16_t)state*327;
                         if (large < -32768)
                            pointer_y = -32768;
                         else if (large > 32767)
@@ -721,6 +721,7 @@ static void retropad_update_input(void)
                   }
                   else if (mouse_type == NETRETROPAD_POINTER  || mouse_type == NETRETROPAD_LIGHTGUN)
                   {
+                     /* NETRETROPAD_CORE_PREFIX(log_cb)(RETRO_LOG_DEBUG, "Pointer state: %d %d %d (%d %d)\n",i,id, (int16_t)state,pointer_x,pointer_y); */
                      if (id == RETRO_DEVICE_ID_POINTER_X || id == RETRO_DEVICE_ID_LIGHTGUN_SCREEN_X)
                         pointer_x = (int16_t)state;
                      else if (id == RETRO_DEVICE_ID_POINTER_Y || id == RETRO_DEVICE_ID_LIGHTGUN_SCREEN_Y)
@@ -1035,6 +1036,8 @@ void NETRETROPAD_CORE_PREFIX(retro_run)(void)
       }
    }
    
+   /* Button values for sensor test screen, since they do not follow any pattern, it is *
+    * provided as a direct list. */
    if (mouse_type == NETRETROPAD_MOUSE)
    {
       int offset;
@@ -1054,10 +1057,10 @@ void NETRETROPAD_CORE_PREFIX(retro_run)(void)
       offset = DESC_OFFSET(&mouse, 0, 0, RETRO_DEVICE_ID_MOUSE_WHEELDOWN);
       sensor_item_colors[84] = mouse.value[offset] ? 0xA000 : 0x0000;
 
-      offset = DESC_OFFSET(&mouse, 0, 0, RETRO_DEVICE_ID_MOUSE_HORIZ_WHEELUP);
+      offset = DESC_OFFSET(&mouse, 0, 0, RETRO_DEVICE_ID_MOUSE_HORIZ_WHEELDOWN);
       sensor_item_colors[85] = mouse.value[offset] ? 0xA000 : 0x0000;
 
-      offset = DESC_OFFSET(&mouse, 0, 0, RETRO_DEVICE_ID_MOUSE_HORIZ_WHEELDOWN);
+      offset = DESC_OFFSET(&mouse, 0, 0, RETRO_DEVICE_ID_MOUSE_HORIZ_WHEELUP);
       sensor_item_colors[86] = mouse.value[offset] ? 0xA000 : 0x0000;
       
       offset = DESC_OFFSET(&mouse, 0, 0, RETRO_DEVICE_ID_MOUSE_BUTTON_4);
@@ -1108,17 +1111,38 @@ void NETRETROPAD_CORE_PREFIX(retro_run)(void)
       sensor_item_colors[97] = lightgun.value[offset] ? 0xA000 : 0x0000;
 
    }
+   else if (mouse_type == NETRETROPAD_POINTER)
+   {
+      int offset;
+
+      offset = DESC_OFFSET(&pointer, 0, 0, RETRO_DEVICE_ID_POINTER_PRESSED);
+      sensor_item_colors[104] = pointer.value[offset] ? 0xA000 : 0x0000;
+
+      offset = DESC_OFFSET(&pointer, 0, 1, RETRO_DEVICE_ID_POINTER_PRESSED);
+      sensor_item_colors[105] = pointer.value[offset] ? 0xA000 : 0x0000;
+
+      offset = DESC_OFFSET(&pointer, 0, 2, RETRO_DEVICE_ID_POINTER_PRESSED);
+      sensor_item_colors[106] = pointer.value[offset] ? 0xA000 : 0x0000;
+
+      offset = DESC_OFFSET(&pointer, 0, 0, RETRO_DEVICE_ID_POINTER_IS_OFFSCREEN);
+      sensor_item_colors[77] = pointer.value[offset] ? 0xA000 : 0x0000;
+
+   }
+   /* Edge / offscreen indicators */
    if (mouse_type == NETRETROPAD_POINTER || mouse_type == NETRETROPAD_LIGHTGUN)
    {
-      sensor_item_colors[90] = (pointer_x == -32768) ? 0xA000 : 0x0000;
-      sensor_item_colors[100] = (pointer_x < -32700) ? 0xA000 : 0x0000;
-      sensor_item_colors[92] = (pointer_x ==  32767) ? 0xA000 : 0x0000;
-      sensor_item_colors[102] = (pointer_x >  32700) ? 0xA000 : 0x0000;
-      sensor_item_colors[91] = (pointer_y == -32768) ? 0xA000 : 0x0000;
-      sensor_item_colors[101] = (pointer_y < -32700) ? 0xA000 : 0x0000;
-      sensor_item_colors[93] = (pointer_y ==  32767) ? 0xA000 : 0x0000;
-      sensor_item_colors[103] = (pointer_y >  32700) ? 0xA000 : 0x0000;
+      sensor_item_colors[98]  = (pointer_x == -32768) ? 0xA000 : 0x0000;
+      sensor_item_colors[90]  = (pointer_x == -32767) ? 0xA000 : 0x0000;
+      sensor_item_colors[100] = (pointer_x  < -32700) ? 0xA000 : 0x0000;
+      sensor_item_colors[92]  = (pointer_x ==  32767) ? 0xA000 : 0x0000;
+      sensor_item_colors[102] = (pointer_x  >  32700) ? 0xA000 : 0x0000;
+      sensor_item_colors[99]  = (pointer_y == -32768) ? 0xA000 : 0x0000;
+      sensor_item_colors[91]  = (pointer_y == -32767) ? 0xA000 : 0x0000;
+      sensor_item_colors[101] = (pointer_y  < -32700) ? 0xA000 : 0x0000;
+      sensor_item_colors[93]  = (pointer_y ==  32767) ? 0xA000 : 0x0000;
+      sensor_item_colors[103] = (pointer_y  >  32700) ? 0xA000 : 0x0000;
    }
+   /* Zero indicator */
    if (mouse_type != 0)
       sensor_item_colors[87] = (pointer_x == 0 && pointer_y == 0) ? 0xA000 : 0x0000;
 

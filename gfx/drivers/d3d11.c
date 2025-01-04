@@ -1537,7 +1537,11 @@ static bool d3d11_gfx_set_shader(void* data, enum rarch_shader_type type, const 
             &d3d11->frame.output_size,       /* FinalViewportSize */
             &d3d11->pass[i].frame_count,     /* FrameCount */
             &d3d11->pass[i].frame_direction, /* FrameDirection */
+            &d3d11->pass[i].frame_time_delta,/* FrameTimeDelta */
+            &d3d11->pass[i].original_fps,        /* OriginalFPS */
             &d3d11->pass[i].rotation,        /* Rotation */
+            &d3d11->pass[i].core_aspect,     /* OriginalAspect */
+            &d3d11->pass[i].core_aspect_rot, /* OriginalAspectRotated */
             &d3d11->pass[i].total_subframes, /* TotalSubFrames */
             &d3d11->pass[i].current_subframe,/* CurrentSubFrame */
          }
@@ -1564,19 +1568,15 @@ static bool d3d11_gfx_set_shader(void* data, enum rarch_shader_type type, const 
          size_t _len            = strlcpy(_path, slang_path, sizeof(_path));
          strlcpy(_path + _len, ".vs.hlsl", sizeof(_path) - _len);
 
-         if (!d3d11_init_shader(
-                  d3d11->device, vs_src, 0, _path, "main", NULL, NULL, desc, countof(desc),
-                  &d3d11->pass[i].shader,
-                  feat_level_hint
-                  )) { }
+         d3d11_init_shader(d3d11->device, vs_src, 0,
+               _path, "main", NULL, NULL, desc, countof(desc),
+               &d3d11->pass[i].shader, feat_level_hint);
 
          strlcpy(_path + _len, ".ps.hlsl", sizeof(_path) - _len);
 
-         if (!d3d11_init_shader(
-                  d3d11->device, ps_src, 0, _path, NULL, "main", NULL, NULL, 0,
-                  &d3d11->pass[i].shader,
-                  feat_level_hint
-                  )) { }
+         d3d11_init_shader(d3d11->device, ps_src, 0, _path,
+               NULL, "main", NULL, NULL, 0,
+               &d3d11->pass[i].shader, feat_level_hint);
 
          free(d3d11->shader_preset->pass[i].source.string.vertex);
          free(d3d11->shader_preset->pass[i].source.string.fragment);
@@ -3091,8 +3091,19 @@ static bool d3d11_gfx_frame(
 #else
          d3d11->pass[i].frame_direction = 1;
 #endif
+         d3d11->pass[i].frame_time_delta = video_driver_get_frame_time_delta_usec();
+
+         d3d11->pass[i].original_fps = video_driver_get_original_fps();
 
          d3d11->pass[i].rotation = retroarch_get_rotation();
+
+         d3d11->pass[i].core_aspect = video_driver_get_core_aspect();
+
+         /* OriginalAspectRotated: return 1/aspect for 90 and 270 rotated content */
+         d3d11->pass[i].core_aspect_rot = video_driver_get_core_aspect();
+         uint32_t rot = retroarch_get_rotation();
+         if (rot == 1 || rot == 3)
+            d3d11->pass[i].core_aspect_rot = 1/d3d11->pass[i].core_aspect_rot;
 
          /* Sub-frame info for multiframe shaders (per real content frame).
             Should always be 1 for non-use of subframes */

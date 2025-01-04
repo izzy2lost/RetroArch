@@ -623,6 +623,8 @@
 #define DEFAULT_INPUT_OVERLAY_POINTER_ENABLE false
 #endif
 
+#define DEFAULT_INPUT_OVERLAY_ANALOG_RECENTER_ZONE 0
+
 #define DEFAULT_INPUT_OVERLAY_LIGHTGUN_PORT -1
 #define DEFAULT_INPUT_OVERLAY_LIGHTGUN_TRIGGER_ON_TOUCH true
 #define DEFAULT_INPUT_OVERLAY_LIGHTGUN_TRIGGER_DELAY 1
@@ -1452,11 +1454,7 @@
  * a new one) */
 #define DEFAULT_CORE_UPDATER_AUTO_BACKUP_HISTORY_SIZE 1
 
-#if defined(ANDROID) || defined(__APPLE__)
-#define DEFAULT_NETWORK_ON_DEMAND_THUMBNAILS true
-#else
 #define DEFAULT_NETWORK_ON_DEMAND_THUMBNAILS false
-#endif
 
 /* Number of entries that will be kept in content history playlist file. */
 #define DEFAULT_CONTENT_HISTORY_SIZE 200
@@ -1756,11 +1754,19 @@
 #define DEFAULT_BUILDBOT_SERVER_URL "http://buildbot.libretro.com/nightly/apple/ios/latest/"
 #elif defined(OSX)
 #if defined(__x86_64__)
+#if defined(HAVE_SSL)
+#define DEFAULT_BUILDBOT_SERVER_URL "https://buildbot.libretro.com/nightly/apple/osx/x86_64/latest/"
+#else
 #define DEFAULT_BUILDBOT_SERVER_URL "http://buildbot.libretro.com/nightly/apple/osx/x86_64/latest/"
+#endif
 #elif defined(__i386__) || defined(__i486__) || defined(__i686__)
 #define DEFAULT_BUILDBOT_SERVER_URL "http://bot.libretro.com/nightly/apple/osx/x86/latest/"
 #elif defined(__aarch64__)
+#if defined(HAVE_SSL)
+#define DEFAULT_BUILDBOT_SERVER_URL "https://buildbot.libretro.com/nightly/apple/osx/arm64/latest/"
+#else
 #define DEFAULT_BUILDBOT_SERVER_URL "http://buildbot.libretro.com/nightly/apple/osx/arm64/latest/"
+#endif
 #else
 #define DEFAULT_BUILDBOT_SERVER_URL "http://buildbot.libretro.com/nightly/apple/osx/ppc/latest/"
 #endif
