@@ -2563,7 +2563,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_AXIS,
-   "Масштабувати лише висоту, або висоту та ширину. Половинні кроки застосовуються до джерел високої роздільної здатності."
+   "Масштабувати або висоту, або висоту, і ширину. Половина кроків застосовуються лише до джерел високої роздільної здатності."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING,
@@ -5373,6 +5373,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ABXY_DIAGONAL_SENSITIVITY,
    "Регулювання розміру зон перекриття у вигляді кнопки обличчя діамант. Встановіть на 100% для 8-сторонньої симетрії."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Аналоговий переробна зона"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Введення аналогової стрілки буде відноситись до першого дотику, якщо натиснуто в цій зоні."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OVERLAY,

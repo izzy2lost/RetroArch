@@ -907,6 +907,10 @@ MSG_HASH(
    "Prise en charge de Video4Linux2 "
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_SSL_SUPPORT,
+   "Prise en charge de SSL "
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
    "Prise en charge de Libusb "
    )
@@ -2523,7 +2527,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_AXIS,
-   "Mettre à l'échelle la hauteur uniquement, ou la hauteur et la largeur. Les demi-étapes s'appliquent aux sources haute résolution."
+   "Mettre à l'échelle soit la hauteur ou la largeur, soit la hauteur et la largeur. Les demi-étapes s'appliquent uniquement aux sources haute résolution."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING,
@@ -5317,6 +5321,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ABXY_DIAGONAL_SENSITIVITY,
    "Ajustez la taille des zones de chevauchement dans le losange des touches. Réglez sur 100 % pour la symétrie sur 8 voies."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Zone de recentrage analogique"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "L'entrée du stick analogique sera relative au premier toucher si appuyée dans cette zone."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OVERLAY,

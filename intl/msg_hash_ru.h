@@ -915,6 +915,10 @@ MSG_HASH(
    "Поддержка Video4Linux2"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_SSL_SUPPORT,
+   "Поддержка SSL"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
    "Поддержка libusb"
    )
@@ -2563,7 +2567,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_AXIS,
-   "Изменять масштаб только по высоте или по высоте и ширине. Значения в полшага применяются к источникам высокого разрешения."
+   "Изменять масштаб по высоте, ширине или по высоте и ширине. Значения в полшага применяются только к источникам высокого разрешения."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING,
@@ -5385,6 +5389,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ABXY_DIAGONAL_SENSITIVITY,
    "Настройка размера зон перекрытия для блока кнопок. Установите на 100% для симметрии по 8 направлениям."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Зона перецентровки аналог. оси"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "При нажатии внутри данной области ввод с аналогового стика отсчитывается от первого касания."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OVERLAY,

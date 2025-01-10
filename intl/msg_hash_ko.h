@@ -915,6 +915,10 @@ MSG_HASH(
    "Video4Linux2 지원"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_SSL_SUPPORT,
+   "SSL 지원"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
    "Libusb 지원"
    )
@@ -2567,7 +2571,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_AXIS,
-   "화면 크기를 조정할 때 기준을 높이로 할지, 높이와 너비 모두로 할지 설정합니다. 고해상도 영상에는 절반 단위 조정도 적용됩니다."
+   "화면 크기를 조정할 때 기준을 높이로 할지, 너비로 할지, 높이와 너비 모두로 할지 설정합니다. 절반 단위 조정은 고해상도 영상에만 적용됩니다."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING,
@@ -5397,6 +5401,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ABXY_DIAGONAL_SENSITIVITY,
    "전면 버튼이 겹치는 부분의 크기를 조절합니다. 100%로 설정하면 8방향 구역의 크기가 모두 같아집니다."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "아날로그 중심점 재정의 구역 범위"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "지정한 구역 내에서 터치를 시작할 경우 처음 터치한 위치를 아날로그 스틱 입력의 중심점으로 사용합니다."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OVERLAY,

@@ -891,6 +891,10 @@ MSG_HASH(
    "Video4Linux2-Unterstützung"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_SSL_SUPPORT,
+   "SSL-Unterstützung"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
    "libusb-Unterstützung"
    )
@@ -2471,7 +2475,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_AXIS,
-   "Nur Höhe oder Höhe und Breite skalieren. Halbschritte beziehen sich auf die Auflösung der Quellen."
+   "Skaliert entweder Höhe oder Breite oder sowohl Höhe als auch Breite. Halbschritte gelten nur für hochauflösende Quellen."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING,
@@ -5245,6 +5249,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ABXY_DIAGONAL_SENSITIVITY,
    "Größe der Überlappungszonen für ABXY-Tastenbereich anpassen. Für 8-Wege-Symmetrie auf 100 % setzen."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Analoge Neuzentrierungszone"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Die Eingabe des analogen Sticks bezieht sich auf das erste Drücken, wenn er innerhalb dieser Zone gedrückt wird."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OVERLAY,

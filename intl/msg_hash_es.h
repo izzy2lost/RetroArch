@@ -911,6 +911,10 @@ MSG_HASH(
    "Soporte de Video4Linux2"
    )
 MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_SSL_SUPPORT,
+   "Soporte de SSL"
+   )
+MSG_HASH(
    MENU_ENUM_LABEL_VALUE_SYSTEM_INFO_LIBUSB_SUPPORT,
    "Soporte de libusb"
    )
@@ -2547,7 +2551,7 @@ MSG_HASH(
    )
 MSG_HASH(
    MENU_ENUM_SUBLABEL_VIDEO_SCALE_INTEGER_AXIS,
-   "Escala solo la altura o también la anchura. Los escalados irregulares se aplicarán a las imágenes en alta resolución."
+   "Escala la altura o la anchura. Los escalados irregulares se aplicarán solo a imágenes en alta resolución."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_VIDEO_SCALE_INTEGER_SCALING,
@@ -5357,6 +5361,14 @@ MSG_HASH(
 MSG_HASH(
    MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ABXY_DIAGONAL_SENSITIVITY,
    "Ajusta el tamaño de las zonas de solapamiento en el bloque de botones de acción. Para obtener una simetría en las ocho direcciones, selecciona 100 %."
+   )
+MSG_HASH(
+   MENU_ENUM_LABEL_VALUE_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "Zona de recentrado de analógicos"
+   )
+MSG_HASH(
+   MENU_ENUM_SUBLABEL_INPUT_OVERLAY_ANALOG_RECENTER_ZONE,
+   "La señal de entrada de los sticks analógicos será relativa a la posición del primer toque si se pulsa dentro de esta zona."
    )
 MSG_HASH(
    MENU_ENUM_LABEL_VALUE_OVERLAY,
