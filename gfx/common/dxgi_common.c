@@ -561,8 +561,11 @@ bool dxgi_check_display_hdr_support(DXGIFactory1 factory, HWND hwnd)
       if (SUCCEEDED(output6->lpVtbl->GetDesc1(output6, &desc1)))
 #endif
       {
+#ifndef __WINRT__
          supported = (desc1.ColorSpace == DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020);
-
+#else
+         supported = uwp_check_hdr();
+#endif
          if (supported)
             video_driver_set_hdr_support();
          else
@@ -685,12 +688,15 @@ void dxgi_set_hdr_metadata(
       return;
    }
 
-
    /* Now select the chromacity based on colour space */
-   if (     chain_bit_depth   == DXGI_SWAPCHAIN_BIT_DEPTH_10
-         && chain_color_space ==
-         DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020)
-      selected_chroma                           = 1;
+   if (chain_bit_depth == DXGI_SWAPCHAIN_BIT_DEPTH_10
+      && chain_color_space ==
+      DXGI_COLOR_SPACE_RGB_FULL_G2084_NONE_P2020)
+   {
+      selected_chroma = 1;
+      if (is_running_on_xbox())
+         uwp_set_hdr(true);
+   }
    else
    {
 #ifdef __cplusplus
@@ -705,7 +711,9 @@ void dxgi_set_hdr_metadata(
       }
       return;
    }
-
+   
+      if (is_running_on_xbox())
+         uwp_set_hdr(false);
    /* Set the HDR meta data */
    chroma                                       =
       &display_chromaticity_list[selected_chroma];
