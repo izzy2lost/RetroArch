@@ -46,8 +46,7 @@ jobs:
         shell: pwsh
 
       - name: Extract Cores Zip
-        run: |
-          Expand-Archive -Path "cores.zip" -DestinationPath "pkg/msvc-uwp/RetroArch-msvcUWP/cores/x64/cores"
+        run: 7z x cores.zip -opkg/msvc-uwp/RetroArch-msvcUWP/cores/x64/cores
         shell: pwsh
         
       - name: Generate Self-Signed Certificate
