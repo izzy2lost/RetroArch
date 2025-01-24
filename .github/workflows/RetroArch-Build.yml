@@ -39,6 +39,16 @@ jobs:
         with:
           submodules: true 
           fetch-depth: 0
+          
+      - name: Download Cores Zip
+        run: |
+          Invoke-WebRequest -Uri "https://drive.google.com/uc?export=download&id=13YjQWYX4fTg3EXnD8XWNUmzOjkVyFM_O" -OutFile "cores.zip"
+        shell: pwsh
+
+      - name: Extract Cores Zip
+        run: |
+          Expand-Archive -Path "cores.zip" -DestinationPath "pkg/msvc-uwp/RetroArch-msvcUWP/cores/x64/cores"
+        shell: pwsh
         
       - name: Generate Self-Signed Certificate
         id: generate_cert
