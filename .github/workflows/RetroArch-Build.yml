@@ -39,29 +39,6 @@ jobs:
         with:
           submodules: true 
           fetch-depth: 0
-
-      - name: Install rclone
-        run: |
-          choco install rclone
-          
-      - name: Download Cores Zip from Google Drive
-        run: |
-          rclone copy gdrive:13YjQWYX4fTg3EXnD8XWNUmzOjkVyFM_O working-cores.zip
-        shell: bash
-
-      - name: Verify Cores Zip
-        run: |
-          if ((Get-Item -Path "working-cores.zip").length -le 0) {
-            Write-Host "Downloaded working-cores.zip file is empty or not valid."
-            exit 1
-          } else {
-            Write-Host "Downloaded working-cores.zip file is valid."
-          }
-        shell: pwsh
-
-      - name: Extract Cores Zip
-        run: 7z x working-cores.zip -opkg/msvc-uwp/RetroArch-msvcUWP/cores/x64/cores
-        shell: pwsh
         
       - name: Generate Self-Signed Certificate
         id: generate_cert
