@@ -940,7 +940,6 @@ extern "C" {
       }
    }
 
-  bool uwp_check_hdr()
   bool uwp_get_hdr_capabilities()
    {
        volatile bool finished = false;
